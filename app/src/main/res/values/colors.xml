@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#6200EE</color>
+    <color name="colorPrimaryDark">#3700B3</color>
+
+
+<!--    <color name="colorAccent">#03DAC5</color>-->
+    <color name="colorAccent">#03DAC5</color>
+    <color name="colorsecondary">#97FAF0</color>
+<!--    theme-->
+    <color name="p_1">#171820</color>
+    <color name="p_2">#fdc029</color>
+    <color name="p_3">#df861d</color>
+    <color name="p_4">#aa3d01</color>
+    <color name="p_5">#bcb6ae</color>
+
+    <!--    color items-->
+    <color name="color1">#F1755B</color>
+    <color name="color2">#5CB187</color>
+    <color name="color3">#B05777</color>
+    <color name="color4">#EEBE5C</color>
+    <color name="color5">#8778E9</color>
+
+
+
+    <color name="teal200">#03DAC5</color>
+    <color name="teal500">#00BCD4</color>
+    <color name="teal900">#048A90</color>
+
+    <color name="yellow500">#FFC107</color>
+    <color name="yellow700">#FFA000</color>
+    <color name="transYellow">#4DFFC107</color>
+
+    <color name="grey500">#DD323232</color>
+    <color name="grey700">#222222</color>
+    <color name="greyLight">#ABA9A9</color>
+    <color name="greyShimmerLight">#F3878787</color>
+    <color name="greyShimmerDark">#F35F5F5F</color>
+
+    <color name="blue500">#195BE0</color>
+    <color name="blueTwitter">#1DA1F2</color>
+
+    <color name="red500">#ED2828</color>
+    <color name="orange500">#FA4C16</color>
+</resources>

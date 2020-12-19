@@ -1,5 +1,8 @@
 <resources>
-    <string name="app_name">mDevConf2020</string>
-<!--    https://www.vectorizer.io/images/upload.html-->
+    <string name="app_name">mDevConf 2020</string>
+    <string name="speakerName">Name</string>
+    <string name="speakerBio">Bio</string>
+    <string name="speakers">Speakers</string>
+    <!--    https://www.vectorizer.io/images/upload.html-->
 
 </resources>

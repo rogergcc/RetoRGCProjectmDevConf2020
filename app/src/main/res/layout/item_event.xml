@@ -28,7 +28,7 @@
             android:background="?attr/baseThemeColor">
 
             <TextView
-                android:id="@+id/tvTopicTitle"
+                android:id="@+id/tvSpeakerName"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -43,7 +43,7 @@
                 tools:text="Android" />
 
             <TextView
-                android:id="@+id/tvConfName"
+                android:id="@+id/tvSpeakerData"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
@@ -51,8 +51,8 @@
                 android:textStyle="bold"
                 app:layout_constraintBottom_toTopOf="@+id/tvCityCountry"
                 app:layout_constraintEnd_toStartOf="@+id/barrier"
-                app:layout_constraintStart_toEndOf="@+id/ivTopic"
-                app:layout_constraintTop_toTopOf="@+id/ivTopic"
+                app:layout_constraintStart_toEndOf="@+id/imgvImage"
+                app:layout_constraintTop_toTopOf="@+id/imgvImage"
                 tools:text="droidcon NYC" />
 
             <TextView
@@ -60,14 +60,15 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="24dp"
-                app:layout_constraintBottom_toBottomOf="@+id/ivTopic"
+                app:layout_constraintBottom_toBottomOf="@+id/imgvImage"
                 app:layout_constraintEnd_toStartOf="@+id/barrier"
-                app:layout_constraintStart_toEndOf="@+id/ivTopic"
-                app:layout_constraintTop_toBottomOf="@+id/tvConfName"
+                app:layout_constraintStart_toEndOf="@+id/imgvImage"
+                app:layout_constraintTop_toBottomOf="@+id/tvSpeakerData"
                 tools:text="Paris, France" />
 
             <TextView
-                android:id="@+id/tvEventDate"
+
+                android:id="@+id/tvBio"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
@@ -76,19 +77,19 @@
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/barrier"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/ivTopic"
+                app:layout_constraintTop_toBottomOf="@+id/imgvImage"
                 app:layout_constraintVertical_bias="0.0"
                 tools:text="19th June, 2020 Tuesday" />
 
             <androidx.appcompat.widget.AppCompatImageView
-                android:id="@+id/ivTopic"
+                android:id="@+id/imgvImage"
                 android:layout_width="60dp"
                 android:layout_height="60dp"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="8dp"
                 android:padding="4dp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/tvTopicTitle"
+                app:layout_constraintTop_toBottomOf="@+id/tvSpeakerName"
                 tools:src="@drawable/ux_logo" />
 
             <androidx.constraintlayout.widget.Guideline

@@ -10,12 +10,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
+import com.rogergcc.retorgcprojectmdevconf2020.data.FireBaseHelper
 import com.rogergcc.retorgcprojectmdevconf2020.databinding.ItemSpeakersBinding
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
 
 
-class SpeakerAdapter : RecyclerView.Adapter<MyViewHolder>() {
-    var list: List<mSpeaker> = listOf()
+class SpeakerAdapter(clickListSpeaker: ISpeakerClickListener) : RecyclerView.Adapter<MyViewHolder>() {
+    var list: MutableList<mSpeaker> = mutableListOf()
+
+    var iSpeakerClickListener:ISpeakerClickListener = clickListSpeaker
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 //        val layoutInflater = LayoutInflater.from(parent.getContext())
@@ -25,6 +28,7 @@ class SpeakerAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
 //        val view = ItemSpeakersBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val layoutInflater=LayoutInflater.from(parent.context)
+
         return MyViewHolder(layoutInflater.inflate(R.layout.item_speakers,parent,false))
     }
 
@@ -34,21 +38,39 @@ class SpeakerAdapter : RecyclerView.Adapter<MyViewHolder>() {
 
     override fun onBindViewHolder(holder: MyViewHolder, position: Int) {
         holder.bind(list[position])
+        holder._binding.eventCardContainer.setOnClickListener {
+            iSpeakerClickListener.clickDetails(list[position])
+        }
+
     }
 
-    fun setItems(newList: List<mSpeaker>) {
-        list = newList
+    fun setSpeakers(speakersList: List<mSpeaker>) {
+//        list = speakersList
+        if (this.list.isNotEmpty()){this.list.clear()}
+        this.list.addAll(speakersList)
         notifyDataSetChanged()
     }
+//    fun setListen(clickListSpeaker: ClickListSpeaker) {
+//        list = newList
+//        notifyDataSetChanged()
+//    }
 }
 class MyViewHolder(view: View):RecyclerView.ViewHolder(view){
+
     val _binding = ItemSpeakersBinding.bind(view)
 
     fun bind(mspeaker: mSpeaker) {
         _binding.tvSpeakerData.text = mspeaker.name
         _binding.tvCityCountry.text = mspeaker.origin
         _binding.tvBio.text = mspeaker.bio
+
+//        FireBaseHelper.loadImageDrawable(itemView.context, R.drawable.ux_logo, _binding.imgvImage)
+        FireBaseHelper.loadImageDrawableUrl(itemView.context, mspeaker.photo, _binding.imgvImage)
     }
+
+
+
+
 }
 
 //class MyViewHolder

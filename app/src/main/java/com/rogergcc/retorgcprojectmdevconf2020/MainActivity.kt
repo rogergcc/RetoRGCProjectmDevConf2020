@@ -1,21 +1,25 @@
 package com.rogergcc.retorgcprojectmdevconf2020
 
+import android.content.Context
 import android.os.Bundle
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
+import com.rogergcc.retorgcprojectmdevconf2020.AboutSpeakerDialog.Companion.KEY_SPEAKER_ENTITY
+import com.rogergcc.retorgcprojectmdevconf2020.data.FireBaseHelper
 import com.rogergcc.retorgcprojectmdevconf2020.databinding.ActivityMainBinding
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
 import timber.log.Timber
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity()
+    ,ISpeakerClickListener{
 
     private lateinit var binding: ActivityMainBinding;
 //    lateinit var linearLayoutManager: LinearLayoutManager
 
 //    lateinit var speakerAdapter: SpeakerAdapter
-    private var sliderAdapter: SpeakerAdapter =SpeakerAdapter()
-    private var linearLayoutManager: LinearLayoutManager= LinearLayoutManager(this)
+    private var sliderAdapter: SpeakerAdapter =SpeakerAdapter(this)
+//    private var linearLayoutManager: LinearLayoutManager= LinearLayoutManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,35 +29,67 @@ class MainActivity : AppCompatActivity() {
 //        num.forEach { number->
 //            Timber.e(number.toString())
 //        }
-
+//        FirebaseApp.initializeApp(this);
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        linearLayoutManager.orientation=RecyclerView.VERTICAL;
 
+
+        binding.rvSpeakers.layoutManager= LinearLayoutManager(this)
         FireBaseHelper.getSpeakers(::renderSpeakers)
 
-        binding.btnShowAbout.setOnClickListener { view -> showAboutSpeakerDialogBottomDialog() }
-
-
+        //binding.btnShowAbout.setOnClickListener { view -> showAboutSpeakerDialogBottomDialog() }
 
     }
 
     private fun renderSpeakers(speakers: List<mSpeaker>) {
 
+//        binding.rvSpeakers.apply {
+//            adapter = sliderAdapter
+//        }
 
-
-        binding.rvSpeakers.apply {
-            adapter = sliderAdapter
-            layoutManager =linearLayoutManager
-        }
-
-        sliderAdapter.setItems(speakers)
+        binding.rvSpeakers.adapter = sliderAdapter;
+        sliderAdapter.setSpeakers(speakers)
         Timber.tag("MainActivity").e(speakers.toString())
     }
 
     private fun showAboutSpeakerDialogBottomDialog() {
+
         AboutSpeakerDialog().show(supportFragmentManager, AboutSpeakerDialog.TAG)
+    }
+
+    private fun showBottomSheet(
+        context: Context,
+        data: String,
+        mspeaker: mSpeaker?
+    ) {
+
+        val bottomSheetFragment = AboutSpeakerDialog()
+
+        val bundle = Bundle()
+
+        bundle.putParcelable(KEY_SPEAKER_ENTITY, mspeaker)
+
+
+        bundle.putString("name", data)
+
+        bottomSheetFragment.arguments = bundle
+
+
+        bottomSheetFragment.show(
+            (context as AppCompatActivity).supportFragmentManager,
+            AboutSpeakerDialog.TAG
+        )
+
+    }
+
+    override fun clickDetails(mspeaker: mSpeaker) {
+        Toast.makeText(this,mspeaker?.origin,Toast.LENGTH_SHORT).show()
+//        showBottomSheet(this,"ROGER",mspeaker)
+//        showAboutSpeakerDialogBottomDialog()
+
+        AboutSpeakerDialog.getAddFragment(mspeaker)
+
     }
 
 }

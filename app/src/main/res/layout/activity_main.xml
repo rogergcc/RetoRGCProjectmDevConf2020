@@ -20,11 +20,17 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.recyclerview.widget.RecyclerView
+
         android:id="@+id/rvSpeakers"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="8dp"
-        android:padding="4dp"
+        android:scrollbarSize="5dp"
+        android:scrollbarThumbVertical="@drawable/scrollbar_thumb"
+        android:scrollbars="vertical"
+
+        android:nestedScrollingEnabled="true"
+
 
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
 

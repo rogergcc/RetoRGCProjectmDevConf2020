@@ -1,11 +1,5 @@
 package com.rogergcc.retorgcprojectmdevconf2020.data
 
-import android.content.Context
-import android.widget.ImageView
-import androidx.annotation.DrawableRes
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import com.bumptech.glide.request.RequestOptions
 import com.google.firebase.firestore.FirebaseFirestore
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
 import timber.log.Timber
@@ -47,15 +41,6 @@ object FireBaseHelper {
                 }
             }
 
-        //.get()
-//            .addOnSuccessListener { documentReference ->
-//                for (document in documentReference.documents) {
-//                    Timber.tag("FireBaseHelper").e(document.data.toString())
-//                }
-//            }
-//            .addOnFailureListener { e ->
-//                Timber.tag("FireBaseHelper").e(e, "Error in reading")
-//            }
     }
 
     fun getDummySpeakers(speakerListener: (List<mSpeaker>) -> Unit) {
@@ -123,23 +108,6 @@ object FireBaseHelper {
 
     }
 
-    fun loadImageDrawable(context: Context, @DrawableRes resId: Int, targetView: ImageView) {
-        Glide.with(context)
-            .asBitmap()
-            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
-            .apply(RequestOptions().override(100))
-            .load(resId)
-            .into(targetView)
-    }
-
-    fun loadImageDrawableUrl(context: Context, urlPhoto: String, targetView: ImageView) {
-        Glide.with(context)
-            .asBitmap()
-            .apply(RequestOptions().diskCacheStrategy(DiskCacheStrategy.ALL))
-            .apply(RequestOptions().override(100))
-            .load(urlPhoto)
-            .into(targetView)
-    }
 
 
 }

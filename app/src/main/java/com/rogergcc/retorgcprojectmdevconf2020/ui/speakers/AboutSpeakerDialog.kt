@@ -1,4 +1,4 @@
-package com.rogergcc.retorgcprojectmdevconf2020
+package com.rogergcc.retorgcprojectmdevconf2020.ui.speakers
 
 import android.app.Dialog
 import android.os.Bundle
@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.TextView
 import com.google.android.material.bottomsheet.BottomSheetDialog
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
+import com.rogergcc.retorgcprojectmdevconf2020.R
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
 
 
@@ -18,12 +19,14 @@ class AboutSpeakerDialog : BottomSheetDialogFragment() {
         const val KEY_SPEAKER_ENTITY = "speaker_entity"
         fun getAddFragment(speaker: mSpeaker): AboutSpeakerDialog {
             val bundle = Bundle().apply { putParcelable(KEY_SPEAKER_ENTITY,speaker) }
-            return AboutSpeakerDialog().apply { arguments= bundle }
+            return AboutSpeakerDialog()
+                .apply { arguments= bundle }
         }
     }
 
 
-    override fun getTheme(): Int = R.style.AppModalStyle
+    override fun getTheme(): Int =
+        R.style.AppModalStyle
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog =
         BottomSheetDialog(requireContext(), theme)

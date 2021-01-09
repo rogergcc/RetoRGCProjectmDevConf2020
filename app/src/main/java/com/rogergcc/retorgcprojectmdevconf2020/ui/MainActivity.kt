@@ -1,24 +1,28 @@
-package com.rogergcc.retorgcprojectmdevconf2020
+package com.rogergcc.retorgcprojectmdevconf2020.ui
 
 import android.content.Context
 import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.rogergcc.retorgcprojectmdevconf2020.AboutSpeakerDialog.Companion.KEY_SPEAKER_ENTITY
 import com.rogergcc.retorgcprojectmdevconf2020.data.FireBaseHelper
 import com.rogergcc.retorgcprojectmdevconf2020.databinding.ActivityMainBinding
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
+import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.AboutSpeakerDialog
+import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.AboutSpeakerDialog.Companion.KEY_SPEAKER_ENTITY
+import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.ISpeakerClickListener
+import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.SpeakerAdapter
 import timber.log.Timber
 
 class MainActivity : AppCompatActivity()
-    ,ISpeakerClickListener{
+    , ISpeakerClickListener {
 
     private lateinit var binding: ActivityMainBinding;
 //    lateinit var linearLayoutManager: LinearLayoutManager
 
 //    lateinit var speakerAdapter: SpeakerAdapter
-    private var sliderAdapter: SpeakerAdapter =SpeakerAdapter(this)
+    private var sliderAdapter: SpeakerAdapter =
+    SpeakerAdapter(this)
 //    private var linearLayoutManager: LinearLayoutManager= LinearLayoutManager(this)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +59,9 @@ class MainActivity : AppCompatActivity()
 
     private fun showAboutSpeakerDialogBottomDialog() {
 
-        AboutSpeakerDialog().show(supportFragmentManager, AboutSpeakerDialog.TAG)
+        AboutSpeakerDialog().show(supportFragmentManager,
+            AboutSpeakerDialog.TAG
+        )
     }
 
     private fun showBottomSheet(
@@ -64,7 +70,8 @@ class MainActivity : AppCompatActivity()
         mspeaker: mSpeaker?
     ) {
 
-        val bottomSheetFragment = AboutSpeakerDialog()
+        val bottomSheetFragment =
+            AboutSpeakerDialog()
 
         val bundle = Bundle()
 
@@ -84,11 +91,13 @@ class MainActivity : AppCompatActivity()
     }
 
     override fun clickDetails(mspeaker: mSpeaker) {
-        Toast.makeText(this,mspeaker?.origin,Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, mspeaker.origin,Toast.LENGTH_SHORT).show()
 //        showBottomSheet(this,"ROGER",mspeaker)
 //        showAboutSpeakerDialogBottomDialog()
 
-        AboutSpeakerDialog.getAddFragment(mspeaker)
+        AboutSpeakerDialog.getAddFragment(
+            mspeaker
+        )
 
     }
 

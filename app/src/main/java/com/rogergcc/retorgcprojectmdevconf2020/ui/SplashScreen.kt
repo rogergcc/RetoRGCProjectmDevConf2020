@@ -1,10 +1,10 @@
-package com.rogergcc.retorgcprojectmdevconf2020
+package com.rogergcc.retorgcprojectmdevconf2020.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.os.Handler
-import android.view.WindowManager
+import androidx.appcompat.app.AppCompatActivity
+import com.rogergcc.retorgcprojectmdevconf2020.R
 
 class SplashScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {

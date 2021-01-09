@@ -1,4 +1,4 @@
-package com.rogergcc.retorgcprojectmdevconf2020
+package com.rogergcc.retorgcprojectmdevconf2020.ui.speakers
 
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
 

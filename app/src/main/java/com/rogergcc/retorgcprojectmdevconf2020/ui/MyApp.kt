@@ -1,6 +1,7 @@
-package com.rogergcc.retorgcprojectmdevconf2020
+package com.rogergcc.retorgcprojectmdevconf2020.ui
 
 import android.app.Application
+import com.rogergcc.retorgcprojectmdevconf2020.BuildConfig
 import timber.log.Timber
 
 import timber.log.Timber.DebugTree

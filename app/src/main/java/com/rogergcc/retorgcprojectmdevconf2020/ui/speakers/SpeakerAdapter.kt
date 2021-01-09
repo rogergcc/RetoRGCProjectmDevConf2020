@@ -1,4 +1,4 @@
-package com.rogergcc.retorgcprojectmdevconf2020
+package com.rogergcc.retorgcprojectmdevconf2020.ui.speakers
 
 
 /**
@@ -10,15 +10,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.rogergcc.retorgcprojectmdevconf2020.data.FireBaseHelper
+import com.rogergcc.retorgcprojectmdevconf2020.R
 import com.rogergcc.retorgcprojectmdevconf2020.databinding.ItemSpeakersBinding
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
+import com.rogergcc.retorgcprojectmdevconf2020.ui.utils.ImageUtils
 
 
 class SpeakerAdapter(clickListSpeaker: ISpeakerClickListener) : RecyclerView.Adapter<MyViewHolder>() {
     var list: MutableList<mSpeaker> = mutableListOf()
 
-    var iSpeakerClickListener:ISpeakerClickListener = clickListSpeaker
+    var iSpeakerClickListener: ISpeakerClickListener = clickListSpeaker
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyViewHolder {
 //        val layoutInflater = LayoutInflater.from(parent.getContext())
@@ -29,7 +30,13 @@ class SpeakerAdapter(clickListSpeaker: ISpeakerClickListener) : RecyclerView.Ada
 //        val view = ItemSpeakersBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         val layoutInflater=LayoutInflater.from(parent.context)
 
-        return MyViewHolder(layoutInflater.inflate(R.layout.item_speakers,parent,false))
+        return MyViewHolder(
+            layoutInflater.inflate(
+                R.layout.item_speakers,
+                parent,
+                false
+            )
+        )
     }
 
     override fun getItemCount(): Int {
@@ -64,8 +71,8 @@ class MyViewHolder(view: View):RecyclerView.ViewHolder(view){
         _binding.tvCityCountry.text = mspeaker.origin
         _binding.tvBio.text = mspeaker.bio
 
-//        FireBaseHelper.loadImageDrawable(itemView.context, R.drawable.ux_logo, _binding.imgvImage)
-        FireBaseHelper.loadImageDrawableUrl(itemView.context, mspeaker.photo, _binding.imgvImage)
+//        ImageUtils.loadImageDrawable(itemView.context, R.drawable.ux_logo, _binding.imgvImage)
+        ImageUtils.loadImageDrawableUrl(itemView.context, mspeaker.photo, _binding.imgvImage)
     }
 
 

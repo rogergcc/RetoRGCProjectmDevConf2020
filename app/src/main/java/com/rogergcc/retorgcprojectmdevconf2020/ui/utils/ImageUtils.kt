@@ -31,4 +31,5 @@ object ImageUtils {
             .load(resId)
             .into(targetView)
     }
+
 }

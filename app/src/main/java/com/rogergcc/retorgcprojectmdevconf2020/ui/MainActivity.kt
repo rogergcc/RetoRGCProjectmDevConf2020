@@ -5,6 +5,8 @@ import android.os.Bundle
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.rogergcc.retorgcprojectmdevconf2020.BuildConfig
+import com.rogergcc.retorgcprojectmdevconf2020.R
 import com.rogergcc.retorgcprojectmdevconf2020.data.FireBaseHelper
 import com.rogergcc.retorgcprojectmdevconf2020.databinding.ActivityMainBinding
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
@@ -42,6 +44,9 @@ class MainActivity : AppCompatActivity()
         binding.rvSpeakers.layoutManager= LinearLayoutManager(this)
         FireBaseHelper.getSpeakers(::renderSpeakers)
 
+
+        Timber.tag("MainActivity").e(getString(R.string.app_name_build))
+        Timber.tag("MainActivity").e(BuildConfig.BASE_URL)
         //binding.btnShowAbout.setOnClickListener { view -> showAboutSpeakerDialogBottomDialog() }
 
     }

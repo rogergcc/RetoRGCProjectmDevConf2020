@@ -35,10 +35,11 @@ object FireBaseHelper {
                         origin = document.getString("origin") ?: "",
                         photo = document.getString("photo") ?: ""
                     )
+
                 }?.let { speakers ->
                     speakerListener(speakers)
-
                 }
+
             }
 
     }

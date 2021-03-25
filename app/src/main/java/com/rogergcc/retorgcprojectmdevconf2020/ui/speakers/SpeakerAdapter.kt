@@ -73,6 +73,7 @@ class MyViewHolder(view: View):RecyclerView.ViewHolder(view){
 
 //        ImageUtils.loadImageDrawable(itemView.context, R.drawable.ux_logo, _binding.imgvImage)
         ImageUtils.loadImageDrawableUrl(itemView.context, mspeaker.photo, _binding.imgvImage)
+
     }
 
 

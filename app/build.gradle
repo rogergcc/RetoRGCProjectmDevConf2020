@@ -5,12 +5,16 @@ plugins {
     id 'kotlin-kapt'
     id 'com.google.gms.google-services'
 }
-
+Properties properties = new Properties()
+if (rootProject.file("local.properties").exists()) {
+    properties.load(rootProject.file("local.properties").newDataInputStream())
+}
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.1"
 
     defaultConfig {
+        manifestPlaceholders = [activityLabel: "defaultName"]
         applicationId "com.rogergcc.retorgcprojectmdevconf2020"
         minSdkVersion 21
         targetSdkVersion 30
@@ -19,43 +23,68 @@ android {
         multiDexEnabled true
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
+//    productFlavors {
+//        development {
+//            manifestPlaceholders = [activityLabel: "DEV"]
+//        }
+//        production {
+//
+//        }
+//    }
+        buildTypes {
+            def baseUrl = '\"https://cinema-movie-trivia.herokuapp.com/api/v1/getMovies"'
+            def googleServerKey = '\"key"'
 
-    buildTypes {
-        release {
-            minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            debug {
+                versionNameSuffix "-DEBUG"
+                debuggable true
+
+                buildConfigField 'String', 'BASE_URL', baseUrl
+                buildConfigField 'String', 'web_client_id', googleServerKey
+                resValue "string", "app_name_build", "DevConf_Debug"
+                //resValue("string", "google_maps_key", localProperties['google_maps_key_debug'])
+            }
+            release {
+                debuggable false
+                buildConfigField 'String', 'BASE_URL', baseUrl
+                buildConfigField 'String', 'web_client_id', googleServerKey
+
+                resValue "string", "app_name_build", "DevConf"
+                //resValue("string", "google_maps_key", localProperties['google_maps_key'])
+                minifyEnabled false
+                proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            }
+        }
+        buildFeatures {
+            viewBinding = true
         }
     }
-    buildFeatures{
-        viewBinding =true
-    }
-}
 
-dependencies {
-    implementation fileTree(dir: "libs", include: ["*.jar"])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    implementation 'androidx.cardview:cardview:1.0.0'
+    dependencies {
+        implementation fileTree(dir: "libs", include: ["*.jar"])
+        implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+        implementation 'androidx.core:core-ktx:1.3.2'
+        implementation 'androidx.appcompat:appcompat:1.2.0'
+        implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+        implementation 'androidx.cardview:cardview:1.0.0'
 
 //    implementation 'com.google.android.material:material:1.2.1'
-    // Material design
-    implementation "com.google.android.material:material:$material_version"
+        // Material design
+        implementation "com.google.android.material:material:$material_version"
 
-    // Import the Firebase BoM
-    implementation platform('com.google.firebase:firebase-bom:25.12.0')
-    implementation 'com.google.firebase:firebase-firestore-ktx:22.0.1'
-    implementation 'com.jakewharton.timber:timber:4.7.1'
+        // Import the Firebase BoM
+        implementation platform('com.google.firebase:firebase-bom:25.12.0')
+        implementation 'com.google.firebase:firebase-firestore-ktx:22.0.1'
+        implementation 'com.jakewharton.timber:timber:4.7.1'
 
-    // glide
-    implementation "com.github.bumptech.glide:glide:$glide_version"
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
-
-
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+        // glide
+        implementation "com.github.bumptech.glide:glide:$glide_version"
+        kapt "com.github.bumptech.glide:compiler:$glide_version"
 
 
-}
+        testImplementation 'junit:junit:4.13'
+        androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+        androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    }

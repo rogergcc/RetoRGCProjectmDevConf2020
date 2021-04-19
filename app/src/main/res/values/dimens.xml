@@ -6,4 +6,5 @@
     <dimen name="drawable_padding">8dp</dimen>
     <dimen name="dim_size_text">18sp</dimen>
     <dimen name="sp_30">30sp</dimen>
+    <dimen name="sp_20">20sp</dimen>
 </resources>

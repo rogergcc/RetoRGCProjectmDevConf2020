@@ -2,7 +2,7 @@ package com.rogergcc.retorgcprojectmdevconf2020.data
 
 import com.google.firebase.firestore.FirebaseFirestore
 import com.rogergcc.retorgcprojectmdevconf2020.model.mSpeaker
-import timber.log.Timber
+import com.rogergcc.retorgcprojectmdevconf2020.ui.utils.TimberAppLogger
 
 
 /**
@@ -20,7 +20,7 @@ object FireBaseHelper {
         db.collection(COLLECTION_SPEAKERS)
             .addSnapshotListener { value, error ->
                 if (error != null) {
-                    Timber.tag("FireBaseHelper").e(error.message.toString())
+                    TimberAppLogger.e("FireBaseHelper ${error.message.toString()} ")
                 }
 
 //                snapshot?.documents?.let { documents ->

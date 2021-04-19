@@ -14,7 +14,7 @@ import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.AboutSpeakerDialog
 import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.AboutSpeakerDialog.Companion.KEY_SPEAKER_ENTITY
 import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.ISpeakerClickListener
 import com.rogergcc.retorgcprojectmdevconf2020.ui.speakers.SpeakerAdapter
-import timber.log.Timber
+import com.rogergcc.retorgcprojectmdevconf2020.ui.utils.TimberAppLogger
 
 class MainActivity : AppCompatActivity()
     , ISpeakerClickListener {
@@ -45,21 +45,30 @@ class MainActivity : AppCompatActivity()
         FireBaseHelper.getSpeakers(::renderSpeakers)
 
 
-        Timber.tag("MainActivity").e(getString(R.string.app_name_build))
-        Timber.tag("MainActivity").e(BuildConfig.BASE_URL)
+        TimberAppLogger.e("MainActivity ${getString(R.string.app_name_build)}")
+
+        TimberAppLogger.e("MainActivity ${BuildConfig.BASE_URL}")
         //binding.btnShowAbout.setOnClickListener { view -> showAboutSpeakerDialogBottomDialog() }
 
     }
 
     private fun renderSpeakers(speakers: List<mSpeaker>) {
 
-//        binding.rvSpeakers.apply {
-//            adapter = sliderAdapter
-//        }
 
-        binding.rvSpeakers.adapter = sliderAdapter;
+
+        binding.rvSpeakers.apply {
+            layoutManager = LinearLayoutManager(
+                context!!,
+//                this@MainActivity
+                LinearLayoutManager.VERTICAL,
+                false
+            )
+            this.adapter = sliderAdapter
+        }
+
+//        binding.rvSpeakers.adapter = sliderAdapter;
         sliderAdapter.setSpeakers(speakers)
-        Timber.tag("MainActivity").e(speakers.toString())
+        TimberAppLogger.e("MainActivity ${speakers.toString()}")
     }
 
     private fun showAboutSpeakerDialogBottomDialog() {

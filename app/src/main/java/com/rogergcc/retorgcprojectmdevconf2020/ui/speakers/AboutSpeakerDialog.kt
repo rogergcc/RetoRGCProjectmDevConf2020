@@ -37,10 +37,13 @@ class AboutSpeakerDialog : BottomSheetDialogFragment() {
         savedInstanceState: Bundle?
     ): View? {
         val data =  arguments?.getString("name")
+        val speaker = arguments?.getParcelable<mSpeaker>(KEY_SPEAKER_ENTITY)
 
         val view = inflater.inflate(R.layout.fragment_speaker_about, container, false)
 
-        view.findViewById<TextView>(R.id.tvNameAbout).text=data
+        view.findViewById<TextView>(R.id.tvTitleAbout).text=speaker?.origin
+        view.findViewById<TextView>(R.id.tvNameAbout).text=speaker?.name
+        view.findViewById<TextView>(R.id.tvBioAbout).text=speaker?.bio
 
         return view
 //        return inflater.inflate(R.layout.fragment_speaker_about, container, false)

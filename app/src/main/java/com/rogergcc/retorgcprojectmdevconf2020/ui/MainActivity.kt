@@ -2,7 +2,6 @@ package com.rogergcc.retorgcprojectmdevconf2020.ui
 
 import android.content.Context
 import android.os.Bundle
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.rogergcc.retorgcprojectmdevconf2020.BuildConfig
@@ -105,13 +104,16 @@ class MainActivity : AppCompatActivity()
     }
 
     override fun clickDetails(mspeaker: mSpeaker) {
-        Toast.makeText(this, mspeaker.origin,Toast.LENGTH_SHORT).show()
-//        showBottomSheet(this,"ROGER",mspeaker)
+//        Toast.makeText(this, mspeaker.origin,Toast.LENGTH_SHORT).show()
+////        showBottomSheet(this,"ROGER",mspeaker)
 //        showAboutSpeakerDialogBottomDialog()
-
-        AboutSpeakerDialog.getAddFragment(
-            mspeaker
-        )
+        showBottomSheet(this,"DummyDataSend",mspeaker)
+//        AboutSpeakerDialog.getAddFragment(
+//            mspeaker
+//        )
+//
+//        val dialog = AboutSpeakerDialog.getAddFragment(mspeaker)
+//        dialog.show(supportFragmentManager, AboutSpeakerDialog.TAG)
 
     }
 
